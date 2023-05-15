@@ -1,8 +1,16 @@
-import React from 'react'
-
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from "react-redux";
+import { fetchCocktail } from '../redux/action';
 const CocktailList = () => {
+  let dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(fetchCocktail())
+  }, [])
   return (
-    <div>CocktailList</div>
+    <>
+      <h2>CocktailList</h2>
+    </>
   )
 }
 

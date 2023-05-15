@@ -1,6 +1,7 @@
 import * as types from "./actionTypes"
 const initialState = {
     cocktails : [],
+    cocktai : [],
     loading : false,
     error : null,
 }
@@ -26,6 +27,27 @@ switch(action.type){
             loading : true,
             error : action.payload
         }
+
+
+        case types.GET_SINGLE_COCKTAIL_START:
+            return {
+                ...state,
+                loading : true
+            }
+    
+            case types.GET_SINGLE_COCKTAIL_SUCCESS:
+            return {
+                ...state,
+                loading : false,
+                cocktail : action.payload
+            }
+    
+            case types.GET_SINGLE_COCKTAIL_FAIL:
+            return {
+                ...state,
+                loading : true,
+                error : action.payload
+            }
 
     default : 
     return state

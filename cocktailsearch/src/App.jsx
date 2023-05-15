@@ -4,6 +4,7 @@
 import "./App.css";
 import Header from "./component/Header";
 import Home from "./pages/Home";
+import SingleCocktail from "./pages/SingleCocktail";
 import { Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header/>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/cocktail/:id" element={<SingleCocktail />} />
       </Routes>
     </>
   );

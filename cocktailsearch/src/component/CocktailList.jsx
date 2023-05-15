@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCocktail } from "../redux/action";
-import { Box, Spinner, Text, Grid, GridItem } from "@chakra-ui/react";
+import {Button, Box, Spinner, Text, Grid, GridItem } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 const CocktailList = () => {
   let dispatch = useDispatch();
   const { cocktails, loading } = useSelector((state) => ({ ...state.data }));
@@ -28,7 +29,7 @@ const CocktailList = () => {
     } else {
       setModifiedCocktail([]);
     }
-  }, []);
+  }, [cocktails]);
 
   if (loading) {
     return <Spinner color="red.500" />;
@@ -42,18 +43,19 @@ const CocktailList = () => {
       <h2>CocktailList</h2>
       <Box>
         <Grid templateColumns="repeat(5, 1fr)" gap={6}>
-          {
-            modifiedCocktail.map((item) => {
-                          return (
-                            <GridItem key={item.id}>
-                              <img src={item.image} alt={item.name} />
-                              <p>{item.name}</p>
-                              <p>{item.info}</p>
-                              <p>{item.glass}</p>
-                            </GridItem>
-                          );
-                        })
-          }
+          {modifiedCocktail.map((item) => {
+            return (
+              <GridItem key={item.id}>
+                <img src={item.image} alt={item.name} />
+                <p>{item.name}</p>
+                <p>{item.info}</p>
+                <p>{item.glass}</p>
+                <Link to={`/cocktail/${item.id}`}>
+                  <Button>Info</Button>
+                </Link>
+              </GridItem>
+            );
+          })}
         </Grid>
       </Box>
     </>

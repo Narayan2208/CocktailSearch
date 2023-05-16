@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { fetchSingleCocktail } from '../redux/action'
@@ -30,13 +31,13 @@ const SingleCocktail = () => {
         strIngredient4,
         strIngredient5,
       } = cocktail[0];
-      const ingredients = {
+      const ingredients = [
         strIngredient1,
         strIngredient2,
         strIngredient3,
         strIngredient4,
         strIngredient5,
-      };
+      ].filter(Boolean);
       const newCocktail = {
         name,
         image,
@@ -55,9 +56,8 @@ const SingleCocktail = () => {
   if (!modifiedCocktail) {
     return <Text>No Cocktail to display</Text>;
   } else {
-    const { name, image, category, info, glass, instructions,ingredients } = modifiedCocktail;
-    // const [ ingredients ] = modifiedCocktail;
-    // console.log("ingredients",  ingredients);
+    const { name, image, category, info, glass, instructions, ingredients } = modifiedCocktail;
+    console.log("ingredients", ingredients);
     return (
       <>
         {loading ? (
@@ -87,10 +87,10 @@ const SingleCocktail = () => {
                   <span>Instructions :</span>{instructions}
                 </p>
                 <p>
-                <span>ingredients :</span>
-                
-                {ingredients.strIngredient1}  
-                {ingredients.strIngredient2}
+                  <span>Ingredients :</span>
+                  {ingredients.map((item, index) => (
+                    <span key={index}>{item}</span>
+                  ))}
                 </p>
               </div>
             </div>
@@ -102,3 +102,4 @@ const SingleCocktail = () => {
 }
 
 export default SingleCocktail;
+

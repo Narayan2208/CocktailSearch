@@ -18,9 +18,11 @@ const SearchInput = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div> 
-          <label htmlFor='name'>Search Cocktail</label>
+        <div style={{ display:"flex"}}>  
+          <label htmlFor='name'>Search Cocktail </label>
+          <div style={{border : "2px solid black" , marginLeft : "20px"}}>
           <input type='text' name='name' id='name' value={searchTerm} onChange={handleChange} />
+          </div>
         </div>
        
       </form>

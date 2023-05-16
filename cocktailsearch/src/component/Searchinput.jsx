@@ -1,17 +1,31 @@
-import React from 'react'
-import {fetchSearchCocktail} from '../redux/action'
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchSearchCocktail } from '../redux/action';
 
-const Searchinput = () => {
+const SearchInput = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const dispatch = useDispatch();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    dispatch(fetchSearchCocktail(searchTerm));
+  };
+
   return (
     <>
-      <form>
-        <div>
-          <label htmlFor='name'> Search Cocktail</label>
-          <input type='text' name='name' id='name'/>
+      <form onSubmit={handleSubmit}>
+        <div> 
+          <label htmlFor='name'>Search Cocktail</label>
+          <input type='text' name='name' id='name' value={searchTerm} onChange={handleChange} />
         </div>
+       
       </form>
     </>
-  )
-}
+  );
+};
 
-export default Searchinput
+export default SearchInput;

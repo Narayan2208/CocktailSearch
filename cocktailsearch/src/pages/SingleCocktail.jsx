@@ -55,7 +55,9 @@ const SingleCocktail = () => {
   if (!modifiedCocktail) {
     return <Text>No Cocktail to display</Text>;
   } else {
-    const { name, image, category, info, glass, instructions, ingredients } = modifiedCocktail;
+    const { name, image, category, info, glass, instructions,ingredients } = modifiedCocktail;
+    // const [ ingredients ] = modifiedCocktail;
+    // console.log("ingredients",  ingredients);
     return (
       <>
         {loading ? (
@@ -86,9 +88,9 @@ const SingleCocktail = () => {
                 </p>
                 <p>
                 <span>ingredients :</span>
-                {instructions.map((item,index)=>{
-                  
-                })}
+                
+                {ingredients.strIngredient1}  
+                {ingredients.strIngredient2}
                 </p>
               </div>
             </div>

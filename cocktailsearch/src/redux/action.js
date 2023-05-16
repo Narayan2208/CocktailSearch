@@ -13,6 +13,18 @@ const fetchCockTailFail = (error) => ({
     payload: error,
 })
 
+const fetchSearchCockTailStart = () => ({
+    type: types.SEARCH_COCKTAIL_START
+})
+const fetchSearchCockTailSuccess = (cocktails) => ({
+    type: types.SEARCH_COCKTAIL_SUCCESS,
+    payload: cocktails,
+})
+const fetchSearchCockTailFail = (error) => ({
+    type: types.SEARCH_COCKTAIL_FAIL,
+    payload: error,
+})
+
 
 const fetchSingleCockTailStart = () => ({
     type: types.GET_SINGLE_COCKTAIL_START
@@ -45,6 +57,18 @@ export function fetchSingleCocktail(id) {
             dispatch(fetchSingleCockTailSuccess(cocktail))
         }).catch((error) => {
           dispatch(fetchSingleCockTailFail(error))  
+        })
+    }
+}
+
+export function fetchSearchCocktail(searchText) {
+    return function (dispatch){
+        dispatch(fetchSearchCockTailStart());
+        axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchText}`).then((response) =>{
+            const cocktails = response.data.drinks;
+            dispatch(fetchSearchCockTailSuccess(cocktails))
+        }).catch((error) => {
+          dispatch(fetchSearchCockTailFail(error))  
         })
     }
 }

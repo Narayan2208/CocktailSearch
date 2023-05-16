@@ -1,11 +1,18 @@
-
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { fetchSingleCocktail } from '../redux/action'
-import { useSelector, useDispatch } from "react-redux"
-import { Text } from '@chakra-ui/react'
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { fetchSingleCocktail } from "../redux/action";
+import { useSelector, useDispatch } from "react-redux";
+import { CardBody, Text } from "@chakra-ui/react";
 import { Button, Spinner } from "@chakra-ui/react";
-
+import {
+  ButtonGroup,
+  Card,
+  CardFooter,
+  Divider,
+  Heading,
+  Image,
+  Stack,
+} from "@chakra-ui/react";
 const SingleCocktail = () => {
   const { cocktail, loading } = useSelector((state) => ({ ...state.data }));
   const [modifiedCocktail, setModifiedCocktail] = useState(null);
@@ -56,50 +63,47 @@ const SingleCocktail = () => {
   if (!modifiedCocktail) {
     return <Text>No Cocktail to display</Text>;
   } else {
-    const { name, image, category, info, glass, instructions, ingredients } = modifiedCocktail;
+    const { name, image, category, info, glass, instructions, ingredients } =
+      modifiedCocktail;
     console.log("ingredients", ingredients);
     return (
       <>
         {loading ? (
           <Spinner color="red.500" />
         ) : (
-          <section>
-            <Link to="/">
-              <Button>Go back</Button>
+          
+          <Card maxW="md" m={"auto"}>
+          <Link to="/">
+              <Button colorScheme="green">Go back</Button>
             </Link>
-            <h2>{name}</h2>
-            <div>
-              <img src={image} alt={name} />
-              <div>
-                <p>
-                  <span>Name :</span>{name}
-                </p>
-                <p>
-                  <span>Category :</span>{category}
-                </p>
-                <p>
-                  <span>Info :</span>{info}
-                </p>
-                <p>
-                  <span>Glass :</span>{glass}
-                </p>
-                <p>
-                  <span>Instructions :</span>{instructions}
-                </p>
-                <p>
-                  <span>Ingredients :</span>
-                  {ingredients.map((item, index) => (
-                    <span key={index}>{item}</span>
+            <CardBody>
+              <Image src={image} alt={name} borderRadius="lg" />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">Name : {name}</Heading>
+                <Text><b>Category</b> : {category}</Text>
+                <Text color="blue.600" fontSize="xl">
+                  <b>Info</b> : {info}
+                </Text>
+                <Text color="orange.900" fontSize="xl">
+                 <b>Glass</b>  : {glass}
+                </Text>
+                <Text color="green.900" fontSize="xl">
+                  <b>Instructions </b> : {instructions}
+                </Text>
+                <Text color="red.600" fontSize="xl">
+                 <b>ingredients </b> :  {ingredients.map((item, index) => (
+                    <span key={index}>{item} </span> 
                   ))}
-                </p>
-              </div>
-            </div>
-          </section>
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider />
+          </Card>
         )}
       </>
     );
   }
-}
+};
 
 export default SingleCocktail;
 

@@ -1,8 +1,16 @@
 import React from 'react'
+import {fetchSearchCocktail} from '../redux/action'
 
 const Searchinput = () => {
   return (
-    <div>Searchinput</div>
+    <>
+      <form>
+        <div>
+          <label htmlFor='name'> Search Cocktail</label>
+          <input type='text' name='name' id='name'/>
+        </div>
+      </form>
+    </>
   )
 }
 

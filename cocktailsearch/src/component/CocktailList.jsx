@@ -45,7 +45,7 @@ const CocktailList = () => {
         <Grid templateColumns="repeat(5, 1fr)" gap={6}>
           {modifiedCocktail.map((item) => {
             return (
-              <GridItem key={item.id}>
+              <GridItem boxShadow={" rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"} key={item.id}>
                 <img src={item.image} alt={item.name} />
                 <p>{item.name}</p>
                 <p>{item.info}</p>

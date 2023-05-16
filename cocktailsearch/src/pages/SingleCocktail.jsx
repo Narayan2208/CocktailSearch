@@ -65,6 +65,33 @@ const SingleCocktail = () => {
             <Link to="/">
               <Button>Go back</Button>
             </Link>
+            <h2>{name}</h2>
+            <div>
+              <img src={image} alt={name} />
+              <div>
+                <p>
+                  <span>Name :</span>{name}
+                </p>
+                <p>
+                  <span>Category :</span>{category}
+                </p>
+                <p>
+                  <span>Info :</span>{info}
+                </p>
+                <p>
+                  <span>Glass :</span>{glass}
+                </p>
+                <p>
+                  <span>Instructions :</span>{instructions}
+                </p>
+                <p>
+                <span>ingredients :</span>
+                {instructions.map((item,index)=>{
+                  
+                })}
+                </p>
+              </div>
+            </div>
           </section>
         )}
       </>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchSingleCocktail } from "../redux/action";
 import { useSelector, useDispatch } from "react-redux";
-import { CardBody, Text } from "@chakra-ui/react";
+import { Badge, Box, CardBody, Flex, Text } from "@chakra-ui/react";
 import { Button, Spinner } from "@chakra-ui/react";
 import {
   ButtonGroup,
@@ -72,30 +72,32 @@ const SingleCocktail = () => {
           <Spinner color="red.500" />
         ) : (
           
-          <Card maxW="md" m={"auto"}>
+          <Card maxW="3xl" m={"auto"}>
           <Link to="/">
-              <Button colorScheme="green">Go back</Button>
+              <Button mt={"10px"} colorScheme="green">Go back</Button>
             </Link>
             <CardBody>
-              <Image src={image} alt={name} borderRadius="lg" />
-              <Stack mt="6" spacing="3">
-                <Heading size="md">Name : {name}</Heading>
-                <Text><b>Category</b> : {category}</Text>
+            <Flex>
+             <Box w={"100%"}> <Image src={image} alt={name} w={"100%"} h={"50vh"} m={"auto"} borderRadius="lg" /></Box>
+              <Stack mt="3" spacing="5" >
+                <Heading size="md"> <Badge ml='1' colorScheme='green' fontSize='1em'>Name</Badge>  : {name}</Heading>
+                <Text><Badge ml='1' colorScheme='blue' fontSize='1em'> Category</Badge> : {category}</Text>
                 <Text color="blue.600" fontSize="xl">
-                  <b>Info</b> : {info}
+                <Badge ml='1' colorScheme='red' fontSize='1em'>Info</Badge> : {info}
                 </Text>
                 <Text color="orange.900" fontSize="xl">
-                 <b>Glass</b>  : {glass}
+                <Badge ml='1' colorScheme='purple' fontSize='1em'>Glass</Badge>  : {glass}
                 </Text>
                 <Text color="green.900" fontSize="xl">
-                  <b>Instructions </b> : {instructions}
+                <Badge ml='1' colorScheme='orange' fontSize='1em'>Instructions </Badge> : {instructions}
                 </Text>
                 <Text color="red.600" fontSize="xl">
-                 <b>ingredients </b> :  {ingredients.map((item, index) => (
+                <Badge ml='1' colorScheme='yellow' fontSize='1em'>ingredients </Badge> :  {ingredients.map((item, index) => (
                     <span key={index}>{item} </span> 
                   ))}
                 </Text>
               </Stack>
+              </Flex>
             </CardBody>
             <Divider />
           </Card>

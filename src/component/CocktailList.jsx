@@ -40,18 +40,18 @@ const CocktailList = () => {
   }
   return (
     <>
-      <h2>CocktailList</h2>
-      <Box>
+      <Text fontSize={"50px"} fontWeight={"bolder"} fontFamily={"monospace"}>CocktailList</Text>
+      <Box >
         <Grid templateColumns="repeat(5, 1fr)" gap={6}>
           {modifiedCocktail.map((item) => {
             return (
-              <GridItem boxShadow={" rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"} key={item.id}>
+              <GridItem background= "rgba( 0, 0, 0, 0.6 )" box-shadow= "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )" backdrop-filter= "blur( 7px )" border-radius= "10px" border= "1px solid rgba( 255, 255, 255, 0.18 )" key={item.id}>
                 <img src={item.image} alt={item.name} />
-                <p>{item.name}</p>
-                <p>{item.info}</p>
-                <p>{item.glass}</p>
+                <Text color={"white"} fontSize={"20px"} fontWeight={"bold"}>{item.name}</Text>
+                <Text color={"white"} fontSize={"18px"}>{item.info}</Text>
+                <Text color={"white"} fontSize={"18px"}>{item.glass}</Text>
                 <Link to={`/cocktail/${item.id}`}>
-                  <Button>Info</Button>
+                  <Button m={"20px"} colorScheme="green">Info</Button>
                 </Link>
               </GridItem>
             );

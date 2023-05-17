@@ -36,7 +36,7 @@ const CocktailList = () => {
   }
 
   if (!cocktails) {
-    return <Text>Mo Cocktails matched</Text>;
+    return <Text fontSize={"50px"} fontFamily={"mono"} fontWeight={"bolder"} color={"black"}>No Cocktails matched❗</Text>;
   }
   return (
     <>
